@@ -24,8 +24,9 @@ DIR=`cd $bin/../; pwd`
 
 START_TIME=`timestamp`
 
-#run bench
-if [ $HADOOP_RELEASE == "hadoop1" ]; then
+# Run bench if 1.x.  sleep is not in the 2.x examples.
+if [ $HADOOP_VERSION == "hadoop1" ]; then
+  echo "cmd: ${HADOOP_EXECUTABLE} jar ${HADOOP_EXAMPLES_JAR} sleep"
   $HADOOP_EXECUTABLE jar $HADOOP_EXAMPLES_JAR sleep \
       -m $NUM_MAPS \
       -r $NUM_REDS \

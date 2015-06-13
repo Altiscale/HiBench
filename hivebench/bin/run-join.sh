@@ -24,6 +24,7 @@ DIR=`cd $bin/../; pwd`
 . "${DIR}/conf/configure.sh"
 
 if [ ! -e $DEPENDENCY_DIR"/hivebench/target/"$HIVE_RELEASE".tar.gz" ]; then
+  echo "${DEPENDENCY_DIR}/hivebench/target/${HIVE_RELEASE}.tar.gz"
   echo "Error: The hive bin file hasn't be downloaded by maven, please check!"
   exit
 fi

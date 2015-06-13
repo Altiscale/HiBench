@@ -24,14 +24,14 @@ export HIBENCH_VERSION="4.0"
 
 ###################### Global Paths ##################
 
-export JAVA_HOME=
-export HADOOP_HOME=
-export HADOOP_EXECUTABLE=
-export HADOOP_CONF_DIR=
-export HADOOP_EXAMPLES_JAR=
-export MAPRED_EXECUTABLE=
-#Set the varaible below only in YARN mode
-export HADOOP_JOBCLIENT_TESTS_JAR=
+#export JAVA_HOME=
+#export HADOOP_HOME=
+export HADOOP_EXECUTABLE=$HADOOP_CMD
+#export HADOOP_CONF_DIR=
+export HADOOP_EXAMPLES_JAR=$HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.4.1.jar
+export MAPRED_EXECUTABLE=$HADOOP_HOME/bin/mapred
+# Set the varaible below only in YARN mode.  XXX Trying this.
+export HADOOP_JOBCLIENT_TESTS_JAR=$HADOOP_EXAMPLES_JAR
 
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_VERSION=hadoop2 # set it to hadoop1 to enable MR1, hadoop2 to enable MR2
@@ -111,7 +111,7 @@ then
 fi
 
 # base dir HDFS
-export DATA_HDFS=/HiBench
+export DATA_HDFS=/user/${USER}/HiBench
 
 # local report
 export HIBENCH_REPORT=${HIBENCH_HOME}/hibench.report
@@ -119,7 +119,7 @@ export HIBENCH_REPORT=${HIBENCH_HOME}/hibench.report
 ################# Compress Options #################
 # swith on/off compression: 0-off, 1-on.
 # Switch it off (COMPRESS_GLOBAL=0) for better performance
-export COMPRESS_GLOBAL=1
+export COMPRESS_GLOBAL=0
 export COMPRESS_CODEC_GLOBAL=org.apache.hadoop.io.compress.DefaultCodec
 export COMPRESS_CODEC_MAP=org.apache.hadoop.io.compress.DefaultCodec
 # Set COMPRESS_CODEC_MAP to SnappyCodec (as shown below) for better performance
